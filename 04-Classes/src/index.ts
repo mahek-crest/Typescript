@@ -1,15 +1,32 @@
-console.log("helo");
-console.log("index ts file ");
-class User {
-  email: string;
+class Department {
   name: string;
-  readonly city: string = "panji";
+  private employee: string[] = [];
 
-  constructor(email: string, name: string) {
-    this.email = email;
-    this.name = name;
+  constructor(n: string) {
+    this.name = n;
+  }
+  describe(this: Department) {
+    console.log(`department : ${this.name}`);
+  }
+
+  addEmployee(empName: string) {
+    this.employee.push(empName);
+  }
+
+  printEmpInfo() {
+    console.log(this.employee);
   }
 }
 
-const mg = new User("m@matchMedia.com", "mg");
-// mg.city = "jaipur "; -- can throw error as it is readonly
+const dmartDept = new Department("accounting");
+console.log(dmartDept);
+dmartDept.describe();
+
+dmartDept.addEmployee("mg");
+dmartDept.printEmpInfo();
+
+class ITDept extends Department {
+  constructor(id: string, public admins: string[]) {
+    super(id);
+  }
+}

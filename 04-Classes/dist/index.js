@@ -1,12 +1,27 @@
 "use strict";
-console.log("helo");
-console.log("index ts file ");
-class User {
-    constructor(email, name) {
-        this.city = "panji";
-        this.email = email;
-        this.name = name;
+class Department {
+    constructor(n) {
+        this.employee = [];
+        this.name = n;
+    }
+    describe() {
+        console.log(`department : ${this.name}`);
+    }
+    addEmployee(empName) {
+        this.employee.push(empName);
+    }
+    printEmpInfo() {
+        console.log(this.employee);
     }
 }
-const mg = new User("m@matchMedia.com", "mg");
-// mg.city = "jaipur "; -- can throw error as it is readonly
+const dmartDept = new Department("accounting");
+console.log(dmartDept);
+dmartDept.describe();
+dmartDept.addEmployee("mg");
+dmartDept.printEmpInfo();
+class ITDept extends Department {
+    constructor(id, admins) {
+        super(id);
+        this.admins = admins;
+    }
+}
