@@ -1,32 +1,17 @@
-class Department {
-  name: string;
-  private employee: string[] = [];
+// abstract classes
 
-  constructor(n: string) {
-    this.name = n;
-  }
-  describe(this: Department) {
-    console.log(`department : ${this.name}`);
-  }
+abstract class TakePhoto {
+  constructor(public cameraMode: string, public filter: string) {}
 
-  addEmployee(empName: string) {
-    this.employee.push(empName);
-  }
-
-  printEmpInfo() {
-    console.log(this.employee);
+  getReelTime(): number {
+    return 0;
   }
 }
 
-const dmartDept = new Department("accounting");
-console.log(dmartDept);
-dmartDept.describe();
-
-dmartDept.addEmployee("mg");
-dmartDept.printEmpInfo();
-
-class ITDept extends Department {
-  constructor(id: string, public admins: string[]) {
-    super(id);
+class Instagram extends TakePhoto {
+  constructor(public cameraMode: string, public filter: string) {
+    super(cameraMode, filter);
   }
 }
+
+const mg = new Instagram("test", "test");
